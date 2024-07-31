@@ -1,25 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {originals,action,romance, comedy, horror, documentaries} from './urls'
-import Navbar from './Components/NavBar/Navbar';
-import Banner from './Components/Banner/Banner';
-import RowPost from './Components/RowPost/RowPost';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import Home from './Components/Home/Home';
+import './App.css'
+import Landing from './Components/Landing/Landing';
 
-
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Navbar/>
-      <Banner/>
-      <RowPost title='Netflix Originals' url={originals}/>
-      <RowPost title='Action Movies' isSmall url={action}/>
-      <RowPost title='Romance Movies' isSmall url={romance}/>
-      <RowPost title='Comedy Movies' isSmall url={comedy}/>
-      <RowPost title='Horror Movies' isSmall url={horror}/>
-      <RowPost title='Documentaries' isSmall url={documentaries}/>
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/login" element={<Landing />} />
+          <Route path="/home" element={<Home/>} />
+          <Route path="/" element={<Landing />} /> 
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
